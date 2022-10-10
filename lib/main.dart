@@ -91,24 +91,13 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     child: Text(
       'Matematika dan Ilmu Pengetahuan Alam (MIPA) adalah jurusan yang mempelajari gabungan ilmu matematika dan '
-      'ilmu pengetahuan alam (biologi, fisika, dan kimia). Mata pelajaran utama: Matematika. '
+      'ilmu pengetahuan alam (biologi, fisika, dan kimia). '
       'Berlokasi di: Universitas Tanjungpura '
       'Alamat: Jl. Jenderal Ahmad Yani, Bansir Laut, Kec. Sungai Raya, '
       'Kabupaten Kubu Raya, Kalimantan Barat 78115 ',
       softWrap: true,
       textAlign: TextAlign.center,
     ),
-  );
-
-  /* Gambar */
-  Widget imageSection = Container(
-    margin: const EdgeInsets.all(4),
-        child: Image.asset(
-             'assets/images/fmipa1.jpg',
-              width: 600,
-              height: 240,
-              fit: BoxFit.cover,
-        ),
   );
 
   @override
@@ -127,9 +116,42 @@ class _MyHomePageState extends State<MyHomePage> {
           _buildButtonColumn(color, Icons.call, 'CALL'),
           _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
           _buildButtonColumn(color, Icons.share, 'SHARE'),
+          _buildButtonColumn(color, Icons.web, 'WEBSITE'),
         ],
       ),
     );
+
+    /* Gambar */
+  Widget imageSection = Container(
+    margin: const EdgeInsets.all(4),
+    decoration: BoxDecoration(
+        border: Border.all(width: 2.0, color: Colors.grey)
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Image.asset(
+             'assets/images/fmipa1.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+        ),
+        Row(
+          children: [
+            _buildImageColumn('assets/images/fmipa1.jpg'),
+            _buildImageColumn('assets/images/fmipa2.jpg'),
+            _buildImageColumn('assets/images/fmipa3.jpg'),
+          ],
+        ),
+      ],
+    ),
+        // child: Image.asset(
+        //      'assets/images/fmipa1.jpg',
+        //       width: 600,
+        //       height: 240,
+        //       fit: BoxFit.cover,
+        // ),
+  );
    
 
     /* Struktur APK */
@@ -173,6 +195,22 @@ class _MyHomePageState extends State<MyHomePage> {
               color: color,
             ),
           ),
+        ),
+      ],
+    );
+  }
+  Column _buildImageColumn(String foto) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+          child: 
+            Image.asset(
+                foto,
+                width: 100,
+                height: 80,
+                fit: BoxFit.cover,
+            ),
         ),
       ],
     );
